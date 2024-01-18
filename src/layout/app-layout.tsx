@@ -7,7 +7,7 @@ type AppLayoutProps = {
 
 export function AppLayout({ header, main }: AppLayoutProps) {
   return (
-    <div>
+    <div className={'container'}>
       {header}
       {main}
     </div>

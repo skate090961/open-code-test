@@ -37,5 +37,15 @@ body {
   line-height: var(--line-height-m);
   color: var(--color-dark-900);
 
-  background-color: var(--color-light-100);
+  background-color: var(--color-accent-500);
+}
+
+.container {
+  max-width: 1240px;
+  margin: 10px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+  height: 100vh;
 }
