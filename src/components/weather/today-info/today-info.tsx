@@ -1,6 +1,6 @@
 import SunCloudIcon from '@/assets/icons/weather-icons/sun-cloud-icon'
 import { Typography } from '@/components/ui/typography'
-import { TodayItem } from '@/components/weather/today-info/today-item'
+import { TodayInfoItem } from '@/components/weather/today-info/today-info-item'
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoIosSunny } from 'react-icons/io'
 import { PiSunHorizonFill } from 'react-icons/pi'
@@ -37,7 +37,7 @@ export function TodayInfo() {
         <div className={s.line}></div>
         <div className={s.infoList}>
           {items.map(item => (
-            <TodayItem item={item} key={item.value} />
+            <TodayInfoItem item={item} key={item.value} />
           ))}
         </div>
         <div className={s.line}></div>

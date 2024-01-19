@@ -7,7 +7,7 @@ type TodayInfoItemProps = {
   item: TodayInfoItemType
 }
 
-export function TodayItem({ item }: TodayInfoItemProps) {
+export function TodayInfoItem({ item }: TodayInfoItemProps) {
   const { name, value } = item
 
   return (
