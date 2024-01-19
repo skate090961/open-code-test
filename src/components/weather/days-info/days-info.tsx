@@ -24,10 +24,14 @@ export function DaysInfo() {
   ]
 
   return (
-    <Carousel>
-      {days.map((day, index) => (
-        <DayInfoItem day={day} key={index} />
-      ))}
-    </Carousel>
+    <div>
+      <Carousel>
+        {days.map((day, index) => (
+          <Carousel.Page key={index}>
+            <DayInfoItem day={day} />
+          </Carousel.Page>
+        ))}
+      </Carousel>
+    </div>
   )
 }
