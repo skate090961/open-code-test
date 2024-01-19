@@ -1,0 +1,76 @@
+@import '@/styles/mixins';
+
+.root {
+  padding: 25px 20px;
+
+  color: var(--color-light-100);
+
+  background: rgb(149 208 255);
+  background: linear-gradient(0deg, rgb(149 208 255 / 100%) 0%, rgb(25 119 241 / 100%) 100%);
+  border-radius: 5px;
+}
+
+.location {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.todayInfo {
+  color: var(--color-accent-100);
+}
+
+.degree {
+  display: inline-flex;
+  justify-content: center;
+
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 30px;
+
+  font-size: 64px;
+}
+
+.line {
+  @include border(--color-light-100);
+
+  width: 100%;
+  opacity: 0.5;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px;
+
+  background-color: var(--color-accent-300);
+  border-radius: 5px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+}
+
+.time {
+  font-size: 24px;
+}
+
+.weatherIconWrapper {
+  display: flex;
+  justify-content: center;
+}

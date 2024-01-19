@@ -7,3 +7,9 @@
   font-weight: var($fontWeight);
   line-height: var($lineHeight);
 }
+
+@mixin wrapper {
+  background-color: var(--color-light-100);
+  border-radius: 5px;
+  padding: 10px;
+}
