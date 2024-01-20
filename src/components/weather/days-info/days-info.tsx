@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import SunCloudIcon from '@/assets/icons/weather-icons/sun-cloud-icon'
+import SunCloudIcon from '@/common/assets/icons/weather-icons/sun-cloud-icon'
 import { Typography } from '@/components/ui/typography'
 import { DayInfoItem } from '@/components/weather/days-info/day-info-item'
 

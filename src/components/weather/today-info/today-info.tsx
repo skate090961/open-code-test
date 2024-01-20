@@ -1,4 +1,4 @@
-import SunCloudIcon from '@/assets/icons/weather-icons/sun-cloud-icon'
+import SunCloudIcon from '@/common/assets/icons/weather-icons/sun-cloud-icon'
 import { Typography } from '@/components/ui/typography'
 import { TodayInfoItem } from '@/components/weather/today-info/today-info-item'
 import { FaLocationDot } from 'react-icons/fa6'

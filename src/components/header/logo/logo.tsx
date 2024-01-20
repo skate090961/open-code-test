@@ -1,4 +1,4 @@
-import LogoIcon from '@/assets/icons/logo-icon'
+import LogoIcon from '@/common/assets/icons/logo-icon'
 import { Typography } from '@/components/ui/typography'
 
 import s from './logo.module.scss'

@@ -1,4 +1,4 @@
-import SunCloudIcon from '@/assets/icons/weather-icons/sun-cloud-icon'
+import SunCloudIcon from '@/common/assets/icons/weather-icons/sun-cloud-icon'
 import { Typography } from '@/components/ui/typography'
 import { DayInfoType } from '@/components/weather/days-info/days-info'
 

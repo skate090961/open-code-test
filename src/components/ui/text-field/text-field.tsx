@@ -1,6 +1,6 @@
 import { ComponentProps, ComponentPropsWithoutRef, forwardRef } from 'react'
 
-import SearchIcon from '@/assets/icons/search-icon'
+import SearchIcon from '@/common/assets/icons/search-icon'
 import { Typography } from '@/components/ui/typography'
 
 import s from './text-field.module.scss'
