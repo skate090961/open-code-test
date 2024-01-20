@@ -7,7 +7,9 @@ export function Weather() {
   return (
     <div className={s.weather}>
       <TodayInfo />
-      <DaysInfo />
+      <div className={s.wrapper}>
+        <DaysInfo />
+      </div>
     </div>
   )
 }

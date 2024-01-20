@@ -1,5 +1,7 @@
-import { Children, ReactNode, useContext, useState } from 'react'
+import { ReactNode, useContext } from 'react'
 
+import { ITEM_WIDTH } from '@/components/carousel/carousel.constant'
+import { useCarousel } from '@/components/carousel/carousel.model'
 import { CarouselContext } from '@/components/carousel/carousel-context'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
@@ -8,34 +10,16 @@ import s from './carousel.module.scss'
 type CarouselProps = {
   children: ReactNode
 }
-const PAGE_WIDTH = 30
 
 export function Carousel({ children }: CarouselProps) {
-  const [offset, setOffset] = useState(0)
-  const handleLeftArrowClick = () => {
-    setOffset(currentOffset => {
-      const newOffset = currentOffset + PAGE_WIDTH
-
-      return Math.min(newOffset, 0)
-    })
-  }
-  const handleRightArrowClick = () => {
-    setOffset(currentOffset => {
-      const newOffset = currentOffset - PAGE_WIDTH
-      const maxOffset = -(PAGE_WIDTH * (children ? Children.count(children) - 1 : 0))
-
-      return Math.max(newOffset, maxOffset)
-    })
-  }
+  const { containerRef, handleLeftArrowClick, handleRightArrowClick } = useCarousel()
 
   return (
-    <CarouselContext.Provider value={{ width: PAGE_WIDTH }}>
+    <CarouselContext.Provider value={{ width: ITEM_WIDTH }}>
       <div className={s.root}>
         <FaChevronLeft className={s.arrow} onClick={handleLeftArrowClick} />
-        <div className={s.window}>
-          <div className={s.items} style={{ transform: `translateX(${offset}%)` }}>
-            {children}
-          </div>
+        <div className={s.container} ref={containerRef}>
+          {children}
         </div>
         <FaChevronRight className={s.arrow} onClick={handleRightArrowClick} />
       </div>
@@ -43,7 +27,7 @@ export function Carousel({ children }: CarouselProps) {
   )
 }
 
-export function Page({ children }: CarouselProps) {
+function Page({ children }: CarouselProps) {
   const { width } = useContext(CarouselContext)
 
   return (
