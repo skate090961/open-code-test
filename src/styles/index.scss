@@ -1,4 +1,6 @@
+@forward 'font';
 @forward 'colors';
 @forward 'typography';
 @forward 'boilerplate';
-@forward 'font';
+
+@import 'react-toastify/dist/ReactToastify.css';
