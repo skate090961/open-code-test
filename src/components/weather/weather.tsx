@@ -1,14 +1,17 @@
 import { useEffect } from 'react'
 
-import { WeatherApi } from '@/api/weather-api'
 import { DaysInfo } from '@/components/weather/days-info/days-info'
 import { TodayInfo } from '@/components/weather/today-info'
+import { fetchWeather } from '@/store/reducers/weather-reducer/weather-thunk'
+import { useAppDispatch } from '@/store/store'
 
 import s from './weather.module.scss'
 
 export function Weather() {
+  const dispatch = useAppDispatch()
+
   useEffect(() => {
-    WeatherApi.fetchWeather()
+    dispatch(fetchWeather('samara'))
   }, [])
 
   return (

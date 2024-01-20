@@ -1,10 +1,11 @@
 import { instance } from '@/api/api-instance'
+import { WeatherResponseType } from '@/types/weather.types'
 
 export const WeatherApi = {
-  fetchWeather() {
-    return instance.get('weather', {
+  fetchWeather(city: string) {
+    return instance.get<WeatherResponseType>('weather', {
       params: {
-        q: 'Samara',
+        q: city,
       },
     })
   },
