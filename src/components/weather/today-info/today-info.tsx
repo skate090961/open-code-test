@@ -1,6 +1,8 @@
 import SunCloudIcon from '@/common/assets/icons/weather-icons/sun-cloud-icon'
 import { Typography } from '@/components/ui/typography'
 import { TodayInfoItem } from '@/components/weather/today-info/today-info-item'
+import { WeatherIconSelector } from '@/components/weather/weather-icon-selector/weather-icon-selector'
+import { CurrentWeatherType } from '@/types/weather.types'
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoIosSunny } from 'react-icons/io'
 import { PiSunHorizonFill } from 'react-icons/pi'
@@ -11,8 +13,10 @@ export type TodayInfoItemType = {
   name: string
   value: string
 }
-
-export function TodayInfo() {
+type TodayInfoProps = {
+  weather: CurrentWeatherType
+}
+export function TodayInfo({ weather }: TodayInfoProps) {
   const items = [
     { name: 'Ощущается как', value: '14°' },
     { name: 'Осадки', value: 'без осадков' },
@@ -30,9 +34,9 @@ export function TodayInfo() {
       </div>
       <Typography className={s.todayInfo}>Сегодня, 11 января 2023</Typography>
       <div className={s.weatherIconWrapper}>
-        <SunCloudIcon />
+        <WeatherIconSelector icon={'Snow'} />
       </div>
-      <Typography className={s.degree}>18°С</Typography>
+      <Typography className={s.degree}>{`${Math.floor(weather.main.temp)}°С`}</Typography>
       <div className={s.infoWrapper}>
         <div className={s.line}></div>
         <div className={s.infoList}>

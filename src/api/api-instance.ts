@@ -12,6 +12,8 @@ instance.interceptors.request.use(config => {
   config.params = {
     ...config.params,
     appid: API_KEY,
+    lang: 'ru',
+    units: 'metric',
   }
 
   return config

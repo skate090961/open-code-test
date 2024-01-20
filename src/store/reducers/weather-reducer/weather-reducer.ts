@@ -1,7 +1,11 @@
-import { WeatherResponseType } from '@/types/weather.types'
+import { CurrentWeatherType } from '@/types/weather.types'
 
 const initialState = {
-  weather: {} as WeatherResponseType,
+  currentWeather: {
+    main: {
+      temp: 0,
+    },
+  } as CurrentWeatherType,
 }
 
 type AppStateType = typeof initialState
@@ -14,7 +18,7 @@ export const weatherReducer = (
     case 'WEATHER/SET-WEATHER':
       return {
         ...state,
-        weather: action.weather,
+        currentWeather: action.weather,
       }
     default:
       return state
@@ -23,4 +27,5 @@ export const weatherReducer = (
 
 type ActionsType = ReturnType<typeof setWeather>
 
-export const setWeather = (weather: any) => ({ type: 'WEATHER/SET-WEATHER', weather }) as const
+export const setWeather = (currentWeather: any) =>
+  ({ type: 'WEATHER/SET-WEATHER', weather: currentWeather }) as const
