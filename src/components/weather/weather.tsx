@@ -6,37 +6,37 @@ import { DetailsInfo } from '@/components/weather/details-info/details-info'
 import { TodayInfo } from '@/components/weather/today-info'
 import {
   selectCurrentWeather,
-  selectIsLoading,
+  selectForecastWeatherList,
+  selectIsInit,
 } from '@/store/reducers/weather-reducer/weather-selector'
-import {
-  fetchCurrentWeather,
-  fetchForecastWeather,
-} from '@/store/reducers/weather-reducer/weather-thunk'
+import { fetchWeather } from '@/store/reducers/weather-reducer/weather-thunk'
 import { useAppDispatch } from '@/store/store'
 
 import s from './weather.module.scss'
 
 export function Weather() {
-  const isLoading = useSelector(selectIsLoading)
+  const isInit = useSelector(selectIsInit)
 
   useEffect(() => {
-    dispatch(fetchCurrentWeather('Дубаи'))
-    dispatch(fetchForecastWeather('Дубаи'))
+    dispatch(fetchWeather('Москва'))
   }, [])
   const dispatch = useAppDispatch()
   const currentWeather = useSelector(selectCurrentWeather)
+  const forecastWeatherList = useSelector(selectForecastWeatherList)
+
+  if (!isInit) {
+    return <></>
+  }
 
   return (
     <div className={s.weather}>
-      {!isLoading && (
-        <>
-          <TodayInfo weather={currentWeather} />
-          <div className={s.wrapper}>
-            <DetailsInfo weather={currentWeather} />
-            <DaysInfo />
-          </div>
-        </>
-      )}
+      <>
+        <TodayInfo weather={currentWeather} />
+        <div className={s.wrapper}>
+          <DetailsInfo weather={currentWeather} />
+          <DaysInfo forecastWeather={forecastWeatherList} />
+        </div>
+      </>
     </div>
   )
 }

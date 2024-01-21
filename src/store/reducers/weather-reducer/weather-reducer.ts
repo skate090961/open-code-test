@@ -11,7 +11,7 @@ export type ForecastWeatherType = {
 const initialState = {
   currentWeather: {} as CurrentWeatherResponseType,
   forecastWeather: {} as ForecastWeatherType,
-  isLoading: true,
+  isInit: false,
 }
 
 type AppStateType = typeof initialState
@@ -31,10 +31,10 @@ export const weatherReducer = (
         ...state,
         forecastWeather: action.forecastWeather,
       }
-    case 'WEATHER/SET-IS-LOADING':
+    case 'WEATHER/SET-IS-INIT':
       return {
         ...state,
-        isLoading: action.isLoading,
+        isInit: action.isInit,
       }
     default:
       return state
@@ -44,12 +44,11 @@ export const weatherReducer = (
 type ActionsType =
   | ReturnType<typeof setCurrentWeather>
   | ReturnType<typeof setForecastWeather>
-  | ReturnType<typeof setIsLoading>
+  | ReturnType<typeof setIsInit>
 
 export const setCurrentWeather = (currentWeather: CurrentWeatherResponseType) =>
   ({ currentWeather, type: 'WEATHER/SET-CURRENT-WEATHER' }) as const
 export const setForecastWeather = (forecastWeather: ForecastWeatherType) =>
   ({ forecastWeather, type: 'WEATHER/SET-FORECAST-WEATHER' }) as const
 
-export const setIsLoading = (isLoading: boolean) =>
-  ({ isLoading, type: 'WEATHER/SET-IS-LOADING' }) as const
+export const setIsInit = (isInit: boolean) => ({ isInit, type: 'WEATHER/SET-IS-INIT' }) as const

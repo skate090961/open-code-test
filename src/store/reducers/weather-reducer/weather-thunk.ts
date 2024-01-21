@@ -5,41 +5,30 @@ import {
   ForecastWeatherType,
   setCurrentWeather,
   setForecastWeather,
-  setIsLoading,
+  setIsInit,
 } from '@/store/reducers/weather-reducer/weather-reducer'
 import { Dispatch } from 'redux'
 
-export const fetchCurrentWeather = (city: string) => async (dispatch: Dispatch) => {
-  dispatch(setAppStatus('loading'))
-  dispatch(setIsLoading(true))
-  try {
-    const res = await weatherApi.fetchCurrentWeather(city)
-
-    dispatch(setCurrentWeather(res.data))
-    dispatch(setAppStatus('succeeded'))
-  } catch (e) {
-    dispatch(setAppStatus('failed'))
-    handleError(dispatch, e)
-  } finally {
-    dispatch(setIsLoading(false))
-  }
-}
-
-export const fetchForecastWeather =
+export const fetchWeather =
   (city: string, count: number = 8) =>
   async (dispatch: Dispatch) => {
     dispatch(setAppStatus('loading'))
-    dispatch(setIsLoading(true))
     try {
-      const res = await weatherApi.fetchForecastWeather(city, count)
-      const forecastWeatherModel: ForecastWeatherType = { count: res.data.cnt, list: res.data.list }
+      const currentWeather = await weatherApi.fetchCurrentWeather(city)
+
+      dispatch(setCurrentWeather(currentWeather.data))
+
+      const forecastWeather = await weatherApi.fetchForecastWeather(city, count)
+      const forecastWeatherModel: ForecastWeatherType = {
+        count: forecastWeather.data.cnt,
+        list: forecastWeather.data.list,
+      }
 
       dispatch(setForecastWeather(forecastWeatherModel))
       dispatch(setAppStatus('succeeded'))
+      dispatch(setIsInit(true))
     } catch (e) {
-      dispatch(setAppStatus('failed'))
       handleError(dispatch, e)
-    } finally {
-      dispatch(setIsLoading(false))
+      dispatch(setAppStatus('failed'))
     }
   }

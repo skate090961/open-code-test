@@ -10,10 +10,6 @@ import { CurrentWeatherResponseType } from '@/types/weather-response.types'
 
 import s from './today-info.module.scss'
 
-export type TodayInfoItemType = {
-  name: string
-  value: string
-}
 type TodayInfoProps = {
   weather: CurrentWeatherResponseType
 }
