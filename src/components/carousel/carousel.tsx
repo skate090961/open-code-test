@@ -17,11 +17,15 @@ export function Carousel({ children }: CarouselProps) {
   return (
     <CarouselContext.Provider value={{ width: ITEM_WIDTH }}>
       <div className={s.root}>
-        <FaChevronLeft className={s.arrow} onClick={handleLeftArrowClick} />
+        <button className={s.button} onClick={handleLeftArrowClick}>
+          <FaChevronLeft className={s.arrow} onClick={handleLeftArrowClick} />
+        </button>
         <div className={s.container} ref={containerRef}>
           {children}
         </div>
-        <FaChevronRight className={s.arrow} onClick={handleRightArrowClick} />
+        <button className={s.button} onClick={handleRightArrowClick}>
+          <FaChevronRight className={s.arrow} />
+        </button>
       </div>
     </CarouselContext.Provider>
   )

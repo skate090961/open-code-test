@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { GlobalError } from '@/components/global-error/global-error'
-import { LinearLoader } from '@/components/loader'
+import { LinearLoader } from '@/components/linear-loader'
 import { selectAppStatus } from '@/store/reducers/app-reducer'
 import { useAppSelector } from '@/store/store'
 

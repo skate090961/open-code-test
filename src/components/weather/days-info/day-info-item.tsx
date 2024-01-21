@@ -6,27 +6,31 @@ import {
 
 import s from './days-info.module.scss'
 
-export type DayInfoProps = {
+type DateModelType = {
   date: string
+  day: string
+  time: string
+}
+export type DayInfoProps = {
+  dateModel: DateModelType
   day: string
   description: string
   icon: WeatherVariantType
   temp: number
-  tempFeelsLike: number
 }
 
-export function DayInfoItem({ date, day, description, icon, temp, tempFeelsLike }: DayInfoProps) {
+export function DayInfoItem({ dateModel, description, icon, temp }: DayInfoProps) {
+  const { date, day, time } = dateModel
+
   return (
     <div className={s.item}>
-      <Typography className={s.day} variant={'h2'}>
-        {day}
-      </Typography>
-      <Typography className={s.date}>{date}</Typography>
+      <div className={s.dateWrapper}>
+        <Typography className={s.time}>{time}</Typography>
+        <Typography>{date}</Typography>
+        <Typography>{day}</Typography>
+      </div>
       <WeatherIconSelector className={s.icon} icon={icon} />
       <Typography className={s.temp}>{`${Math.floor(temp)}°С`}</Typography>
-      <Typography className={s.feelsLike} variant={'body2'}>{`${Math.floor(
-        tempFeelsLike
-      )}°С`}</Typography>
       <Typography className={s.info}>{description}</Typography>
     </div>
   )

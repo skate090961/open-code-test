@@ -9,9 +9,12 @@
 
 .container {
   scroll-behavior: smooth;
+
   overflow-x: hidden;
   display: flex;
   gap: 1rem;
+
+  height: 100%;
 }
 
 .arrow {
@@ -31,4 +34,8 @@
 
 .page {
   height: 100%;
+}
+
+.button {
+  all: unset;
 }

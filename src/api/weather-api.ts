@@ -12,10 +12,9 @@ export const weatherApi = {
       },
     })
   },
-  fetchForecastWeather(city: string, count: number = 8) {
+  fetchForecastWeather(city: string) {
     return instance.get<ForecastWeatherResponseType>('forecast', {
       params: {
-        cnt: count,
         q: city,
       },
     })
