@@ -8,7 +8,7 @@ import {
   selectCurrentWeather,
   selectIsLoading,
 } from '@/store/reducers/weather-reducer/weather-selector'
-import { fetchWeather } from '@/store/reducers/weather-reducer/weather-thunk'
+import { fetchCurrentWeather } from '@/store/reducers/weather-reducer/weather-thunk'
 import { useAppDispatch } from '@/store/store'
 
 import s from './weather.module.scss'
@@ -17,7 +17,7 @@ export function Weather() {
   const isLoading = useSelector(selectIsLoading)
 
   useEffect(() => {
-    dispatch(fetchWeather('Дубаи'))
+    dispatch(fetchCurrentWeather('Дубаи'))
   }, [])
   const dispatch = useAppDispatch()
   const currentWeather = useSelector(selectCurrentWeather)

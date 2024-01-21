@@ -2,7 +2,7 @@ import { determineWindDirection } from '@/common/utils/determine-wind-direction'
 import { formatTime } from '@/common/utils/format-time'
 import { Typography } from '@/components/ui/typography'
 import { DetailsInfoItem } from '@/components/weather/details-info/details-info-item'
-import { WeatherResponseType } from '@/types/weather-response.types'
+import { CurrentWeatherResponseType } from '@/types/weather-response.types'
 
 import s from './details-info.module.scss'
 
@@ -13,7 +13,7 @@ export type DetailsInfoItemType = {
 }
 
 type DetailsInfoProps = {
-  weather: WeatherResponseType
+  weather: CurrentWeatherResponseType
 }
 
 export function DetailsInfo({ weather }: DetailsInfoProps) {

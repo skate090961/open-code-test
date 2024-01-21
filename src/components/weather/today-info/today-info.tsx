@@ -6,7 +6,7 @@ import {
   WeatherIconSelector,
   WeatherVariantType,
 } from '@/components/weather/weather-icon-selector/weather-icon-selector'
-import { WeatherResponseType } from '@/types/weather-response.types'
+import { CurrentWeatherResponseType } from '@/types/weather-response.types'
 
 import s from './today-info.module.scss'
 
@@ -15,7 +15,7 @@ export type TodayInfoItemType = {
   value: string
 }
 type TodayInfoProps = {
-  weather: WeatherResponseType
+  weather: CurrentWeatherResponseType
 }
 
 export function TodayInfo({ weather }: TodayInfoProps) {

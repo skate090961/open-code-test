@@ -1,4 +1,4 @@
-export type WeatherResponseType = {
+export type CurrentWeatherResponseType = {
   base: string
   clouds: Clouds
   cod: number
@@ -8,8 +8,20 @@ export type WeatherResponseType = {
   main: Main
   name: string
   snow: Snow
-  sys: Sys
+  sys: SysCurrentWeather
   timezone: number
+  visibility: number
+  weather: Weather[]
+  wind: Wind
+}
+
+export type ForecastWeatherResponseType = {
+  clouds: Clouds
+  dt: number
+  dt_txt: string
+  main: Main & { temp_kf: number }
+  pop: number
+  sys: SysForecastWeather
   visibility: number
   weather: Weather[]
   wind: Wind
@@ -52,8 +64,10 @@ export type Clouds = {
   all: number
 }
 
-export type Sys = {
+export type SysCurrentWeather = {
   country: string
   sunrise: number
   sunset: number
 }
+
+export type SysForecastWeather = { pod: string }

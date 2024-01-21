@@ -1,7 +1,7 @@
-import { WeatherResponseType } from '@/types/weather-response.types'
-//TODO: isLoading currentWeather
+import { CurrentWeatherResponseType } from '@/types/weather-response.types'
+
 const initialState = {
-  currentWeather: {} as WeatherResponseType,
+  currentWeather: {} as CurrentWeatherResponseType,
   isLoading: true,
 }
 
@@ -29,7 +29,7 @@ export const weatherReducer = (
 
 type ActionsType = ReturnType<typeof setIsLoading> | ReturnType<typeof setWeather>
 
-export const setWeather = (currentWeather: WeatherResponseType) =>
+export const setWeather = (currentWeather: CurrentWeatherResponseType) =>
   ({ type: 'WEATHER/SET-WEATHER', weather: currentWeather }) as const
 
 export const setIsLoading = (isLoading: boolean) =>
