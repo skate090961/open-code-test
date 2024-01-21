@@ -1,7 +1,7 @@
 @import '@/styles/mixins';
 
 .header {
-  @include wrapper;
+  @include wrapper(--color-light-100);
 
   display: flex;
   align-items: center;

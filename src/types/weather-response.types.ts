@@ -16,6 +16,13 @@ export type CurrentWeatherResponseType = {
 }
 
 export type ForecastWeatherResponseType = {
+  cnt: number
+  cod: string
+  list: ForecastWeatherEntityType[]
+  message: number
+}
+
+export type ForecastWeatherEntityType = {
   clouds: Clouds
   dt: number
   dt_txt: string

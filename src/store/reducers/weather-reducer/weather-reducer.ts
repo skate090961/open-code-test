@@ -1,7 +1,16 @@
-import { CurrentWeatherResponseType } from '@/types/weather-response.types'
+import {
+  CurrentWeatherResponseType,
+  ForecastWeatherEntityType,
+} from '@/types/weather-response.types'
+
+export type ForecastWeatherType = {
+  count: number
+  list: ForecastWeatherEntityType[]
+}
 
 const initialState = {
   currentWeather: {} as CurrentWeatherResponseType,
+  forecastWeather: {} as ForecastWeatherType,
   isLoading: true,
 }
 
@@ -12,10 +21,15 @@ export const weatherReducer = (
   action: ActionsType
 ): AppStateType => {
   switch (action.type) {
-    case 'WEATHER/SET-WEATHER':
+    case 'WEATHER/SET-CURRENT-WEATHER':
       return {
         ...state,
-        currentWeather: action.weather,
+        currentWeather: action.currentWeather,
+      }
+    case 'WEATHER/SET-FORECAST-WEATHER':
+      return {
+        ...state,
+        forecastWeather: action.forecastWeather,
       }
     case 'WEATHER/SET-IS-LOADING':
       return {
@@ -27,10 +41,15 @@ export const weatherReducer = (
   }
 }
 
-type ActionsType = ReturnType<typeof setIsLoading> | ReturnType<typeof setWeather>
+type ActionsType =
+  | ReturnType<typeof setCurrentWeather>
+  | ReturnType<typeof setForecastWeather>
+  | ReturnType<typeof setIsLoading>
 
-export const setWeather = (currentWeather: CurrentWeatherResponseType) =>
-  ({ type: 'WEATHER/SET-WEATHER', weather: currentWeather }) as const
+export const setCurrentWeather = (currentWeather: CurrentWeatherResponseType) =>
+  ({ currentWeather, type: 'WEATHER/SET-CURRENT-WEATHER' }) as const
+export const setForecastWeather = (forecastWeather: ForecastWeatherType) =>
+  ({ forecastWeather, type: 'WEATHER/SET-FORECAST-WEATHER' }) as const
 
 export const setIsLoading = (isLoading: boolean) =>
   ({ isLoading, type: 'WEATHER/SET-IS-LOADING' }) as const
