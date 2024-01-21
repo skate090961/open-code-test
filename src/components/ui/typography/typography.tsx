@@ -7,6 +7,7 @@ export type TypographyVariant =
   | 'body2'
   | 'caption'
   | 'error'
+  | 'extra'
   | 'h1'
   | 'h2'
   | 'h3'

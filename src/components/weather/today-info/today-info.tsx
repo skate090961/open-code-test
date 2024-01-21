@@ -1,11 +1,12 @@
-import SunCloudIcon from '@/common/assets/icons/weather-icons/sun-cloud-icon'
+import { SharedSvgSelector } from '@/common/assets/icons/shared/shared-svg-selector'
+import { capitalizeFirstLetter } from '@/common/utils/capitalize-first-letter'
+import { formatDate } from '@/common/utils/format-date'
 import { Typography } from '@/components/ui/typography'
-import { TodayInfoItem } from '@/components/weather/today-info/today-info-item'
-import { WeatherIconSelector } from '@/components/weather/weather-icon-selector/weather-icon-selector'
-import { CurrentWeatherType } from '@/types/weather.types'
-import { FaLocationDot } from 'react-icons/fa6'
-import { IoIosSunny } from 'react-icons/io'
-import { PiSunHorizonFill } from 'react-icons/pi'
+import {
+  WeatherIconSelector,
+  WeatherVariantType,
+} from '@/components/weather/weather-icon-selector/weather-icon-selector'
+import { WeatherResponseType } from '@/types/weather-response.types'
 
 import s from './today-info.module.scss'
 
@@ -14,48 +15,36 @@ export type TodayInfoItemType = {
   value: string
 }
 type TodayInfoProps = {
-  weather: CurrentWeatherType
+  weather: WeatherResponseType
 }
+
 export function TodayInfo({ weather }: TodayInfoProps) {
-  const items = [
-    { name: 'Ощущается как', value: '14°' },
-    { name: 'Осадки', value: 'без осадков' },
-    { name: 'Давление', value: '765 мм.рт.ст.' },
-    { name: 'Ветер', value: '3 м/с юго-запад' },
-  ]
+  const { dt, main, name } = weather
+  const currentDate = formatDate(dt)
+  const temp = Math.floor(weather.main.temp)
+  const fellsLikeTemp = Math.floor(main.feels_like)
+
+  const description = capitalizeFirstLetter(weather.weather[0].description)
+  const icon = weather.weather[0].main
 
   return (
     <div className={s.root}>
-      <div className={s.location}>
-        <FaLocationDot className={s.icon} />
-        <Typography as={'h3'} variant={'h1'}>
-          Самара, Россия
-        </Typography>
-      </div>
-      <Typography className={s.todayInfo}>Сегодня, 11 января 2023</Typography>
-      <div className={s.weatherIconWrapper}>
-        <WeatherIconSelector icon={'Snow'} />
-      </div>
-      <Typography className={s.degree}>{`${Math.floor(weather.main.temp)}°С`}</Typography>
-      <div className={s.infoWrapper}>
-        <div className={s.line}></div>
-        <div className={s.infoList}>
-          {items.map(item => (
-            <TodayInfoItem item={item} key={item.value} />
-          ))}
+      <div className={s.top}>
+        <div className={s.location}>
+          <SharedSvgSelector className={s.icon} id={'location'} size={25} />
+          <Typography as={'h3'} variant={'h1'}>
+            {name}
+          </Typography>
         </div>
-        <div className={s.line}></div>
-        <div className={s.infoList}>
-          <div className={s.infoItem}>
-            <IoIosSunny className={s.icon} />
-            <Typography className={s.time}>5:30</Typography>
-          </div>
-          <div className={s.infoItem}>
-            <PiSunHorizonFill className={s.icon} />
-            <Typography className={s.time}>21:45</Typography>
-          </div>
-        </div>
+        <Typography className={s.date}>{`Сегодня, ${currentDate}`}</Typography>
       </div>
+      <div className={s.line}></div>
+      <WeatherIconSelector icon={icon as WeatherVariantType} />
+      <Typography className={s.temp} variant={'extra'}>{`${temp}°С`}</Typography>
+      <Typography className={s.feelsLike}>{`Ощущается как ${fellsLikeTemp}°С`}</Typography>
+      <Typography className={s.description} variant={'h2'}>
+        {description}
+      </Typography>
     </div>
   )
 }

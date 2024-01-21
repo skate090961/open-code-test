@@ -8,8 +8,8 @@
   line-height: var($lineHeight);
 }
 
-@mixin wrapper {
-  background-color: var(--color-light-100);
+@mixin wrapper($color) {
+  background-color: var($color);
   border-radius: 5px;
   padding: 10px;
 }

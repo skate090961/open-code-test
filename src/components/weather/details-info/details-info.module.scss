@@ -1,0 +1,40 @@
+@import '@/styles/mixins';
+
+.root {
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  color: var(--color-dark-900);
+}
+
+.item {
+  @include wrapper(--color-light-500);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.title {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  p {
+    color: var(--color-dark-900);
+  }
+}
+
+.value {
+  color: var(--color-dark-300);
+}

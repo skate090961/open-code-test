@@ -1,8 +1,6 @@
-import { ReactNode } from 'react'
-
-import SunCloudIcon from '@/common/assets/icons/weather-icons/sun-cloud-icon'
 import { Typography } from '@/components/ui/typography'
 import { DayInfoItem } from '@/components/weather/days-info/day-info-item'
+import { WeatherVariantType } from '@/components/weather/weather-icon-selector/weather-icon-selector'
 
 import s from './days-info.module.scss'
 
@@ -11,18 +9,18 @@ import { Carousel } from '../../carousel'
 export type DayInfoType = {
   date: string
   day: string
-  icon: ReactNode
+  icon: WeatherVariantType
   info: string
   temp: string
 }
 export const days: DayInfoType[] = [
-  { date: '19 янв', day: 'Сегодня', icon: <SunCloudIcon />, info: 'Облачно', temp: '+18°' },
-  { date: '20 янв', day: 'Завтра', icon: <SunCloudIcon />, info: 'Облачно', temp: '+18°' },
-  { date: '21 янв', day: 'Понедельник', icon: <SunCloudIcon />, info: 'Облачно', temp: '+18°' },
-  { date: '22 янв', day: 'Вторник', icon: <SunCloudIcon />, info: 'Облачно', temp: '+18°' },
-  { date: '23 янв', day: 'Среда', icon: <SunCloudIcon />, info: 'Облачно', temp: '+18°' },
-  { date: '24 янв', day: 'Четверг', icon: <SunCloudIcon />, info: 'Облачно', temp: '+18°' },
-  { date: '25 янв', day: 'Пятница', icon: <SunCloudIcon />, info: 'Облачно', temp: '+18°' },
+  { date: '19 янв', day: 'Сегодня', icon: 'Snow', info: 'Облачно', temp: '+18°' },
+  { date: '20 янв', day: 'Завтра', icon: 'Snow', info: 'Облачно', temp: '+18°' },
+  { date: '21 янв', day: 'Понедельник', icon: 'Snow', info: 'Облачно', temp: '+18°' },
+  { date: '22 янв', day: 'Вторник', icon: 'Snow', info: 'Облачно', temp: '+18°' },
+  { date: '23 янв', day: 'Среда', icon: 'Snow', info: 'Облачно', temp: '+18°' },
+  { date: '24 янв', day: 'Четверг', icon: 'Snow', info: 'Облачно', temp: '+18°' },
+  { date: '25 янв', day: 'Пятница', icon: 'Snow', info: 'Облачно', temp: '+18°' },
 ]
 
 export function DaysInfo() {

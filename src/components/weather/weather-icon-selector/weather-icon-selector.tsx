@@ -10,9 +10,22 @@ import SmokeIcon from '@/common/assets/icons/weather-icons/smoke-icon'
 import SnowIcon from '@/common/assets/icons/weather-icons/snow-icon'
 import ThunderstormIcon from '@/common/assets/icons/weather-icons/thunderstorm-icon'
 
+export type WeatherVariantType =
+  | 'Atmosphere'
+  | 'Clear'
+  | 'Clouds'
+  | 'Drizzle'
+  | 'Fog'
+  | 'Haze'
+  | 'Rain'
+  | 'Smoke'
+  | 'Snow'
+  | 'Thunderstorm'
+
 type WeatherIconSelectorProps = SVGProps<SVGSVGElement> & {
-  icon: string
+  icon: WeatherVariantType
 }
+
 export function WeatherIconSelector({ icon, ...props }: WeatherIconSelectorProps) {
   switch (icon) {
     case 'Snow':
@@ -26,7 +39,7 @@ export function WeatherIconSelector({ icon, ...props }: WeatherIconSelectorProps
     case 'Clear':
       return <ClearIcon {...props} />
     case 'Atmosphere':
-      return <ClearIcon {...props} />
+      return <CloudsIcon {...props} />
     case 'Clouds':
       return <CloudsIcon {...props} />
     case 'Fog':
