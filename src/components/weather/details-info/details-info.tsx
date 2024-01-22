@@ -2,7 +2,7 @@ import { determineWindDirection } from '@/common/utils/determine-wind-direction'
 import { formatTime } from '@/common/utils/format-time'
 import { Typography } from '@/components/ui/typography'
 import { DetailsInfoItem } from '@/components/weather/details-info/details-info-item'
-import { CurrentWeatherResponseType } from '@/types/weather-response.types'
+import { CurrentWeatherType } from '@/store/reducers/weather-reducer/weather-reducer'
 
 import s from './details-info.module.scss'
 
@@ -13,19 +13,18 @@ export type DetailsInfoItemType = {
 }
 
 type DetailsInfoProps = {
-  weather: CurrentWeatherResponseType
+  weather: CurrentWeatherType
 }
 
 export function DetailsInfo({ weather }: DetailsInfoProps) {
-  const { main, sys, wind } = weather
-  const sunrise = formatTime(sys.sunrise)
-  const sunset = formatTime(sys.sunset)
-  const humidity = main.humidity
-  const pressure = Math.floor(main.pressure * 0.75)
-  const windDirection = determineWindDirection(wind.deg)
+  const sunrise = formatTime(weather.sys.sunrise)
+  const sunset = formatTime(weather.sys.sunset)
+  const humidity = weather.humidity
+  const pressure = Math.floor(weather.pressure * 0.75)
+  const windDirection = determineWindDirection(weather.wind.direction)
   const items = [
     { icon: 'pressure', title: 'Давление', value: `${pressure} мм.рт.cт` },
-    { icon: 'wind', title: 'Скорость ветра', value: `${wind.speed} м/с` },
+    { icon: 'wind', title: 'Скорость ветра', value: `${weather.wind.speed} м/с` },
     { icon: 'direction', title: 'Направление ветра', value: windDirection },
     { icon: 'sunrise', title: 'Восход', value: sunrise },
     { icon: 'sunset', title: 'Закат', value: sunset },

@@ -6,22 +6,22 @@ import {
   WeatherIconSelector,
   WeatherVariantType,
 } from '@/components/weather/weather-icon-selector/weather-icon-selector'
-import { CurrentWeatherResponseType } from '@/types/weather-response.types'
+import { CurrentWeatherType } from '@/store/reducers/weather-reducer/weather-reducer'
 
 import s from './today-info.module.scss'
 
 type TodayInfoProps = {
-  weather: CurrentWeatherResponseType
+  weather: CurrentWeatherType
 }
 
 export function TodayInfo({ weather }: TodayInfoProps) {
-  const { dt, main, name } = weather
-  const currentDate = formatDate(dt)
-  const temp = Math.floor(weather.main.temp)
-  const fellsLikeTemp = Math.floor(main.feels_like)
+  const { date, location } = weather
+  const currentDate = formatDate(date)
+  const temp = Math.floor(weather.temp)
+  const fellsLikeTemp = Math.floor(weather.tempFeelsLike)
 
-  const description = capitalizeFirstLetter(weather.weather[0].description)
-  const icon = weather.weather[0].main
+  const description = capitalizeFirstLetter(weather.description)
+  const icon = weather.icon
 
   return (
     <div className={s.root}>
@@ -29,7 +29,7 @@ export function TodayInfo({ weather }: TodayInfoProps) {
         <div className={s.location}>
           <SharedSvgSelector className={s.icon} id={'location'} size={25} />
           <Typography as={'h3'} variant={'h1'}>
-            {name}
+            {location}
           </Typography>
         </div>
         <Typography className={s.date}>{`Сегодня, ${currentDate}`}</Typography>

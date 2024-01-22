@@ -2,6 +2,7 @@ import { weatherApi } from '@/api/weather-api'
 import { handleError } from '@/common/utils/handle-error'
 import { setAppStatus } from '@/store/reducers/app-reducer'
 import {
+  CurrentWeatherType,
   ForecastWeatherType,
   setCurrentWeather,
   setForecastWeather,
@@ -14,9 +15,25 @@ export const fetchWeather =
   async (dispatch: Dispatch) => {
     dispatch(setAppStatus('loading'))
     try {
-      const currentWeather = await weatherApi.fetchCurrentWeather({ lat, lon })
+      const currentWeatherResponse = await weatherApi.fetchCurrentWeather({ lat, lon })
+      const { data } = currentWeatherResponse
+      const currentWeatherModel: CurrentWeatherType = {
+        date: data.dt,
+        description: data.weather[0].description,
+        humidity: data.main.humidity,
+        icon: data.weather[0].main,
+        location: data.name,
+        pressure: data.main.pressure,
+        sys: { sunrise: data.sys.sunrise, sunset: data.sys.sunset },
+        temp: data.main.temp,
+        tempFeelsLike: data.main.feels_like,
+        wind: {
+          direction: data.wind.deg,
+          speed: data.wind.speed,
+        },
+      }
 
-      dispatch(setCurrentWeather(currentWeather.data))
+      dispatch(setCurrentWeather(currentWeatherModel))
 
       const forecastWeather = await weatherApi.fetchForecastWeather({ lat, lon })
       const forecastWeatherModel: ForecastWeatherType = {
