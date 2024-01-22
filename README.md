@@ -1,4 +1,4 @@
-# [Open Code Test - React Weather]()
+# [Open Code Test - React Weather App]()
 
 ### Clone
 

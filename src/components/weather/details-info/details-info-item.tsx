@@ -1,8 +1,9 @@
 import { SharedSvgSelector } from '@/common/assets/icons/shared/shared-svg-selector'
-import { Typography } from '@/components/ui/typography'
 import { DetailsInfoItemType } from '@/components/weather/details-info/details-info'
 
 import s from './details-info.module.scss'
+
+import { Typography } from '../../typography'
 type DetailsInfoItemProps = {
   item: DetailsInfoItemType
 }

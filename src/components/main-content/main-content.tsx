@@ -10,7 +10,7 @@ export function MainContent() {
   const isInit = useSelector(selectIsInit)
 
   if (!isInit) {
-    return <div></div>
+    return <></>
   }
 
   return (

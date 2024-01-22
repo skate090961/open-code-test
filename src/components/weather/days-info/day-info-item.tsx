@@ -1,10 +1,11 @@
-import { Typography } from '@/components/ui/typography'
 import {
   WeatherIconSelector,
   WeatherVariantType,
 } from '@/components/weather/weather-icon-selector/weather-icon-selector'
 
 import s from './days-info.module.scss'
+
+import { Typography } from '../../typography'
 
 type DateModelType = {
   date: string

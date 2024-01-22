@@ -1,5 +1,5 @@
 import LogoIcon from '@/common/assets/icons/logo-icon'
-import { Typography } from '@/components/ui/typography'
+import { Typography } from '@/components/typography'
 
 import s from './logo.module.scss'
 
@@ -8,7 +8,7 @@ export function Logo() {
     <div className={s.logo}>
       <LogoIcon className={s.icon} />
       <Typography className={s.title} variant={'subtitle1'}>
-        React Weather
+        React Weather App
       </Typography>
     </div>
   )

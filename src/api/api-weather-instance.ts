@@ -6,15 +6,9 @@ const API_KEY = 'c5d7281a9728d59b199f2e575834c1ae'
 
 export const weatherInstance = axios.create({
   baseURL: BASE_URL,
-})
-
-weatherInstance.interceptors.request.use(config => {
-  config.params = {
-    ...config.params,
+  params: {
     appid: API_KEY,
     lang: 'ru',
     units: 'metric',
-  }
-
-  return config
+  },
 })

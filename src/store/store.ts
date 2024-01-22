@@ -1,5 +1,3 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-
 import { addressReducer } from '@/store/reducers/address-reducer/address-reducer'
 import { appReducer } from '@/store/reducers/app-reducer'
 import { weatherReducer } from '@/store/reducers/weather-reducer/weather-reducer'
@@ -17,9 +15,6 @@ export const store = legacy_createStore(rootReducer, applyMiddleware(thunkMiddle
 export type AppRootState = ReturnType<typeof rootReducer>
 
 export type AppDispatch = ThunkDispatch<AppRootState, unknown, AnyAction>
-
-export const useAppDispatch = () => useDispatch<AppDispatch>()
-export const useAppSelector: TypedUseSelectorHook<AppRootState> = useSelector
 
 //@ts-ignore
 window.store = store

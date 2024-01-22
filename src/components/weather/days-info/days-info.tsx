@@ -1,5 +1,4 @@
 import { formatDateTime } from '@/common/utils/format-date-time'
-import { Typography } from '@/components/ui/typography'
 import { DayInfoItem } from '@/components/weather/days-info/day-info-item'
 import { WeatherVariantType } from '@/components/weather/weather-icon-selector/weather-icon-selector'
 import { ForecastWeatherType } from '@/store/reducers/weather-reducer/weather-reducer'
@@ -7,6 +6,7 @@ import { ForecastWeatherType } from '@/store/reducers/weather-reducer/weather-re
 import s from './days-info.module.scss'
 
 import { Carousel } from '../../carousel'
+import { Typography } from '../../typography'
 
 type DaysInfoProps = {
   forecastWeather: ForecastWeatherType[]

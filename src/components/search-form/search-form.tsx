@@ -1,26 +1,10 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { useSelector } from 'react-redux'
-
 import { SharedSvgSelector } from '@/common/assets/icons/shared/shared-svg-selector'
-import { selectStatusAddress } from '@/store/reducers/address-reducer/address-selector'
-import { fetchCities } from '@/store/reducers/address-reducer/address-thunk'
-import { useAppDispatch } from '@/store/store'
+import { useCitySearchForm } from '@/components/search-form/search-form.model'
 
 import s from './search-form.module.scss'
 
-type Inputs = {
-  city: string
-}
-
 export function SearchForm() {
-  const statusAddress = useSelector(selectStatusAddress)
-  const isLoading = statusAddress === 'loading'
-  const dispatch = useAppDispatch()
-  const { handleSubmit, register, reset } = useForm<Inputs>()
-  const onSubmit: SubmitHandler<Inputs> = data => {
-    dispatch(fetchCities(data.city))
-    reset()
-  }
+  const { handleSubmit, isLoading, onSubmit, register } = useCitySearchForm()
 
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>

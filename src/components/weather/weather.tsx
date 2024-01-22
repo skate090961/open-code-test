@@ -16,13 +16,11 @@ export function Weather() {
 
   return (
     <div className={s.weather}>
-      <>
-        <TodayInfo weather={currentWeather} />
-        <div className={s.wrapper}>
-          <DetailsInfo weather={currentWeather} />
-          <DaysInfo forecastWeather={forecastWeatherList} />
-        </div>
-      </>
+      <TodayInfo weather={currentWeather} />
+      <div className={s.wrapper}>
+        <DetailsInfo weather={currentWeather} />
+        <DaysInfo forecastWeather={forecastWeatherList} />
+      </div>
     </div>
   )
 }

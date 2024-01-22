@@ -9,7 +9,7 @@ export type AddressType = {
   name: string
 }
 const initialState = {
-  address: [] as AddressType[],
+  addresses: [] as AddressType[],
   found: 0,
   status: 'idle' as RequestStatusType,
 }
@@ -24,7 +24,7 @@ export const addressReducer = (
     case 'ADDRESS/SET-ADDRESS':
       return {
         ...state,
-        address: action.address,
+        addresses: action.addresses,
         found: action.found,
       }
     case 'ADDRESS/SET-STATUS':
@@ -39,8 +39,8 @@ export const addressReducer = (
 
 type ActionsType = ReturnType<typeof setAddress> | ReturnType<typeof setStatusAddress>
 
-export const setAddress = (address: AddressType[], found: number) =>
-  ({ address, found, type: 'ADDRESS/SET-ADDRESS' }) as const
+export const setAddress = (addresses: AddressType[], found: number) =>
+  ({ addresses, found, type: 'ADDRESS/SET-ADDRESS' }) as const
 
 export const setStatusAddress = (status: RequestStatusType) =>
   ({ status, type: 'ADDRESS/SET-STATUS' }) as const
