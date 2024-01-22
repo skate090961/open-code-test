@@ -1,21 +1,23 @@
-import { instance } from '@/api/api-instance'
+import { weatherInstance } from '@/api/api-weather-instance'
 import {
   CurrentWeatherResponseType,
   ForecastWeatherResponseType,
 } from '@/types/weather-response.types'
 
 export const weatherApi = {
-  fetchCurrentWeather(city: string) {
-    return instance.get<CurrentWeatherResponseType>('weather', {
+  fetchCurrentWeather({ lat, lon }: { lat: string; lon: string }) {
+    return weatherInstance.get<CurrentWeatherResponseType>('weather', {
       params: {
-        q: city,
+        lat,
+        lon,
       },
     })
   },
-  fetchForecastWeather(city: string) {
-    return instance.get<ForecastWeatherResponseType>('forecast', {
+  fetchForecastWeather({ lat, lon }: { lat: string; lon: string }) {
+    return weatherInstance.get<ForecastWeatherResponseType>('forecast', {
       params: {
-        q: city,
+        lat,
+        lon,
       },
     })
   },

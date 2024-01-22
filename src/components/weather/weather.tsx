@@ -18,7 +18,7 @@ export function Weather() {
   const isInit = useSelector(selectIsInit)
 
   useEffect(() => {
-    dispatch(fetchWeather('Кинель'))
+    dispatch(fetchWeather({ lat: '53.22101', lon: '50.634394' }))
   }, [])
   const dispatch = useAppDispatch()
   const currentWeather = useSelector(selectCurrentWeather)
