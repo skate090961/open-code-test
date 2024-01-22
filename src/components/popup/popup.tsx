@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { SharedSvgSelector } from '@/common/assets/icons/shared/shared-svg-selector'
@@ -15,6 +16,19 @@ type PopupProps = {
 }
 
 export function Popup({ close, items }: PopupProps) {
+  useEffect(() => {
+    const handleEscapeKeyPress = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        close()
+      }
+    }
+
+    document.addEventListener('keydown', handleEscapeKeyPress)
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKeyPress)
+    }
+  }, [close])
   const dispatch = useAppDispatch()
   const found = useSelector(selectFound)
   const handleClickClose = () => {
