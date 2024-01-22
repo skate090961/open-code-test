@@ -9,7 +9,7 @@
 }
 
 @mixin wrapper($color) {
+  padding: 10px;
   background-color: var($color);
   border-radius: 5px;
-  padding: 10px;
 }

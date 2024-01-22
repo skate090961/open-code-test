@@ -1,6 +1,6 @@
 import { Typography } from '@/common/components/typography'
 import { useDetailsInfo } from '@/features/weather/model/hooks'
-import { CurrentWeatherType } from '@/features/weather/model/reducer/weatherReducer'
+import { CurrentWeatherType } from '@/features/weather/model/reducer/weatherReducer.types'
 import { WeatherDetailsItem } from '@/features/weather/ui/WeatherDetails/WeatherDetailsItem'
 
 import s from './WeatherDetails.module.scss'

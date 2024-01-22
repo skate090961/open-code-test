@@ -3,7 +3,7 @@ import { Typography } from '@/common/components/typography'
 import { WeatherIconSelector } from '@/features/weather/lib'
 import { WeatherVariantType } from '@/features/weather/lib/WeatherIconSelector'
 import { useTodayInfo } from '@/features/weather/model/hooks'
-import { CurrentWeatherType } from '@/features/weather/model/reducer/weatherReducer'
+import { CurrentWeatherType } from '@/features/weather/model/reducer/weatherReducer.types'
 
 import s from './CurrentWeather.module.scss'
 

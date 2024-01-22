@@ -2,7 +2,7 @@ import { Carousel } from '@/common/components/carousel'
 import { Typography } from '@/common/components/typography'
 import { formatDateTime } from '@/common/utils'
 import { WeatherVariantType } from '@/features/weather/lib/WeatherIconSelector'
-import { ForecastWeatherType } from '@/features/weather/model/reducer/weatherReducer'
+import { ForecastWeatherType } from '@/features/weather/model/reducer/weatherReducer.types'
 import { ForecastWeatherItem } from '@/features/weather/ui/ForecastWeather/ForecastWeatherItem'
 
 import s from './ForecastWeather.module.scss'

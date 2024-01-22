@@ -1,5 +1,5 @@
 import { capitalizeFirstLetter, formatDate } from '@/common/utils'
-import { CurrentWeatherType } from '@/features/weather/model/reducer/weatherReducer'
+import { CurrentWeatherType } from '@/features/weather/model/reducer/weatherReducer.types'
 
 export function useTodayInfo(weather: CurrentWeatherType) {
   const currentDate = formatDate(weather.date)

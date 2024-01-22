@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 import { determineWindDirection, formatTime } from '@/common/utils'
-import { CurrentWeatherType } from '@/features/weather/model/reducer/weatherReducer'
+import { CurrentWeatherType } from '@/features/weather/model/reducer/weatherReducer.types'
 
 export function useDetailsInfo(weather: CurrentWeatherType) {
   const sunrise = formatTime(weather.sys.sunrise)

@@ -2,12 +2,14 @@ import { setAppStatus } from '@/app/model/appReducer'
 import { handleError } from '@/common/utils'
 import { weatherApi } from '@/features/weather/api'
 import {
-  CurrentWeatherType,
-  ForecastWeatherType,
   setCurrentWeather,
   setForecastWeather,
   setIsInit,
 } from '@/features/weather/model/reducer/weatherReducer'
+import {
+  CurrentWeatherType,
+  ForecastWeatherType,
+} from '@/features/weather/model/reducer/weatherReducer.types'
 import { Dispatch } from 'redux'
 
 export const fetchWeather =
