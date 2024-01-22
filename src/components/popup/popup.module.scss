@@ -1,0 +1,90 @@
+@import '@/styles/mixins';
+
+.popup {
+  position: absolute;
+  z-index: 1100;
+  top: 20%;
+  left: calc(50% - 250px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+
+  width: 100%;
+  max-width: 500px;
+  padding: 1rem;
+
+  background: white;
+  border-radius: 5px;
+  box-shadow: 2px 5px 25px -3px var(--color-dark-100);
+}
+
+.blur {
+  position: absolute;
+  z-index: 1000;
+
+  width: 100%;
+  height: 100vh;
+
+  background: rgb(0 0 0 / 25%);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.title {
+  color: var(--color-dark-900);
+}
+
+.item {
+  @include wrapper(--color-light-500);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  color: var(--color-dark-300);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+
+  border-radius: 5px;
+
+  transition: 0.3s;
+
+  &:hover {
+    color: var(--color-light-100);
+    background-color: var(--color-accent-300);
+  }
+
+  &:active {
+    color: var(--color-light-100);
+    background-color: var(--color-accent-500);
+  }
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  svg {
+    fill: var(--color-dark-300);
+  }
+
+  &:active {
+    svg {
+      fill: var(--color-accent-500);
+    }
+  }
+}

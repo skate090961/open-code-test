@@ -2,7 +2,8 @@ import { CgCompressRight } from 'react-icons/cg'
 import { FaWind } from 'react-icons/fa'
 import { FaDroplet, FaLocationDot } from 'react-icons/fa6'
 import { ImCompass2 } from 'react-icons/im'
-import { IoIosSunny } from 'react-icons/io'
+import { IoIosSunny, IoMdClose } from 'react-icons/io'
+import { IoSearchOutline } from 'react-icons/io5'
 import { PiSunHorizonFill } from 'react-icons/pi'
 
 type SharedSvgSelectorProps = {
@@ -26,6 +27,10 @@ export function SharedSvgSelector({ className, id, size }: SharedSvgSelectorProp
       return <FaDroplet className={className} size={size} />
     case 'location':
       return <FaLocationDot className={className} size={size} />
+    case 'close':
+      return <IoMdClose className={className} size={size} />
+    case 'search':
+      return <IoSearchOutline className={className} size={size} />
     default:
       return null
   }

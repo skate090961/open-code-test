@@ -1,4 +1,6 @@
-type CoordsType = {
+import { RequestStatusType } from '@/store/reducers/app-reducer'
+
+export type CoordsType = {
   lat: string
   lon: string
 }
@@ -8,7 +10,8 @@ export type AddressType = {
 }
 const initialState = {
   address: [] as AddressType[],
-  isLoading: false,
+  found: 0,
+  status: 'idle' as RequestStatusType,
 }
 
 type AppStateType = typeof initialState
@@ -22,21 +25,22 @@ export const addressReducer = (
       return {
         ...state,
         address: action.address,
+        found: action.found,
       }
-    case 'ADDRESS/SET-IS-LOADING-ADDRESS':
+    case 'ADDRESS/SET-STATUS':
       return {
         ...state,
-        isLoading: action.isLoading,
+        status: action.status,
       }
     default:
       return state
   }
 }
 
-type ActionsType = ReturnType<typeof setAddress> | ReturnType<typeof setIsLoadingAddress>
+type ActionsType = ReturnType<typeof setAddress> | ReturnType<typeof setStatusAddress>
 
-export const setAddress = (address: AddressType[]) =>
-  ({ address, type: 'ADDRESS/SET-ADDRESS' }) as const
+export const setAddress = (address: AddressType[], found: number) =>
+  ({ address, found, type: 'ADDRESS/SET-ADDRESS' }) as const
 
-export const setIsLoadingAddress = (isLoading: boolean) =>
-  ({ isLoading, type: 'ADDRESS/SET-IS-LOADING-ADDRESS' }) as const
+export const setStatusAddress = (status: RequestStatusType) =>
+  ({ status, type: 'ADDRESS/SET-STATUS' }) as const

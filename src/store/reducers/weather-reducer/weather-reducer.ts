@@ -1,5 +1,3 @@
-import { ForecastWeatherEntityType } from '@/types/weather-response.types'
-
 type SysType = {
   sunrise: number
   sunset: number
@@ -22,13 +20,15 @@ export type CurrentWeatherType = {
 }
 
 export type ForecastWeatherType = {
-  count: number
-  list: ForecastWeatherEntityType[]
+  date: string
+  description: string
+  icon: string
+  temp: number
 }
 
 const initialState = {
   currentWeather: {} as CurrentWeatherType,
-  forecastWeather: {} as ForecastWeatherType,
+  forecastWeather: [] as ForecastWeatherType[],
   isInit: false,
 }
 
@@ -66,7 +66,7 @@ type ActionsType =
 
 export const setCurrentWeather = (currentWeather: CurrentWeatherType) =>
   ({ currentWeather, type: 'WEATHER/SET-CURRENT-WEATHER' }) as const
-export const setForecastWeather = (forecastWeather: ForecastWeatherType) =>
+export const setForecastWeather = (forecastWeather: ForecastWeatherType[]) =>
   ({ forecastWeather, type: 'WEATHER/SET-FORECAST-WEATHER' }) as const
 
 export const setIsInit = (isInit: boolean) => ({ isInit, type: 'WEATHER/SET-IS-INIT' }) as const

@@ -3,12 +3,14 @@ import { handleError } from '@/common/utils/handle-error'
 import {
   AddressType,
   setAddress,
-  setIsLoadingAddress,
+  setStatusAddress,
 } from '@/store/reducers/address-reducer/address-reducer'
+import { setAppStatus } from '@/store/reducers/app-reducer'
 import { Dispatch } from 'redux'
 
 export const fetchCities = (city: string) => async (dispatch: Dispatch) => {
-  dispatch(setIsLoadingAddress(true))
+  dispatch(setStatusAddress('loading'))
+  dispatch(setAppStatus('loading'))
   try {
     const res = await geocodeMapsApi.fetchCities(city)
     const model: AddressType[] = res.data.response.GeoObjectCollection.featureMember.map(data => {
@@ -19,11 +21,16 @@ export const fetchCities = (city: string) => async (dispatch: Dispatch) => {
         name: data.GeoObject.metaDataProperty.GeocoderMetaData.text,
       }
     })
+    const found = Number(
+      res.data.response.GeoObjectCollection.metaDataProperty.GeocoderResponseMetaData.found
+    )
 
-    dispatch(setAddress(model))
+    dispatch(setAddress(model, found))
+    dispatch(setAppStatus('succeeded'))
+    dispatch(setStatusAddress('succeeded'))
   } catch (e) {
     handleError(dispatch, e)
-  } finally {
-    dispatch(setIsLoadingAddress(false))
+    dispatch(setAppStatus('failed'))
+    dispatch(setStatusAddress('failed'))
   }
 }

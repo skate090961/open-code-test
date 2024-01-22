@@ -2,14 +2,14 @@ import { formatDateTime } from '@/common/utils/format-date-time'
 import { Typography } from '@/components/ui/typography'
 import { DayInfoItem } from '@/components/weather/days-info/day-info-item'
 import { WeatherVariantType } from '@/components/weather/weather-icon-selector/weather-icon-selector'
-import { ForecastWeatherEntityType } from '@/types/weather-response.types'
+import { ForecastWeatherType } from '@/store/reducers/weather-reducer/weather-reducer'
 
 import s from './days-info.module.scss'
 
 import { Carousel } from '../../carousel'
 
 type DaysInfoProps = {
-  forecastWeather: ForecastWeatherEntityType[]
+  forecastWeather: ForecastWeatherType[]
 }
 
 export function DaysInfo({ forecastWeather }: DaysInfoProps) {
@@ -20,17 +20,16 @@ export function DaysInfo({ forecastWeather }: DaysInfoProps) {
       </Typography>
       <Carousel>
         {forecastWeather.map((day, index) => {
-          const { dt_txt, main, weather } = day
-          const date = formatDateTime(dt_txt)
+          const date = formatDateTime(day.date)
 
           return (
             <Carousel.Page key={index}>
               <DayInfoItem
                 dateModel={date}
                 day={'День'}
-                description={weather[0].description}
-                icon={weather[0].main as WeatherVariantType}
-                temp={main.temp}
+                description={day.description}
+                icon={day.icon as WeatherVariantType}
+                temp={day.temp}
               />
             </Carousel.Page>
           )

@@ -35,11 +35,15 @@ export const fetchWeather =
 
       dispatch(setCurrentWeather(currentWeatherModel))
 
-      const forecastWeather = await weatherApi.fetchForecastWeather({ lat, lon })
-      const forecastWeatherModel: ForecastWeatherType = {
-        count: forecastWeather.data.cnt,
-        list: forecastWeather.data.list,
-      }
+      const forecastWeatherResponse = await weatherApi.fetchForecastWeather({ lat, lon })
+      const forecastWeatherModel: ForecastWeatherType[] = forecastWeatherResponse.data.list.map(
+        w => ({
+          date: w.dt_txt,
+          description: w.weather[0].description,
+          icon: w.weather[0].main,
+          temp: w.main.temp,
+        })
+      )
 
       dispatch(setForecastWeather(forecastWeatherModel))
       dispatch(setAppStatus('succeeded'))
