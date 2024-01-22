@@ -9,11 +9,11 @@ git clone git@github.com:skate090961/open-code-test.git
 ### Install
 
 ```bash
-yarn
+pnpm i
 ```
 
 ### Dev
 
 ```bash
-yarn dev
+pnpm dev
 ```
