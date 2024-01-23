@@ -1,3 +1,5 @@
+@import '@/styles/mixins';
+
 html {
   box-sizing: border-box;
   height: 100%;
@@ -54,6 +56,9 @@ body {
   height: 100%;
   margin: 0 auto;
   padding: 10px 20px;
+  @include breakpoint(md) {
+    padding: 5px 5px;
+  }
 }
 
 .global-container {

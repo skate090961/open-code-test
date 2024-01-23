@@ -1,1 +1,1 @@
-export const ITEM_WIDTH = 20
+export const ITEM_WIDTH = 25

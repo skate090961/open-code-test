@@ -9,11 +9,6 @@
 
   background-color: var(--color-light-500);
   border-radius: 5px;
-
-  svg {
-    width: 100px;
-    height: 100px;
-  }
 }
 
 .temp {
@@ -24,10 +19,6 @@
 
   font-size: 28px;
   color: var(--color-dark-900);
-}
-
-.info {
-  color: var(--color-dark-300);
 }
 
 .container {
@@ -60,4 +51,5 @@
   display: flex;
   justify-content: center;
   margin-top: 0.5rem;
+  color: var(--color-dark-300);
 }

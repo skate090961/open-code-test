@@ -41,3 +41,9 @@
 .value {
   color: var(--color-dark-300);
 }
+
+.description {
+  @include breakpoint(md) {
+    display: none;
+  }
+}

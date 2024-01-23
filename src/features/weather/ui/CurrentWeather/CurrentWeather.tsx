@@ -25,7 +25,7 @@ export function CurrentWeather({ weather }: TodayInfoProps) {
         </div>
         <Typography className={s.date}>{`Сегодня, ${currentDate}`}</Typography>
       </div>
-      <WeatherIconSelector icon={icon as WeatherVariantType} />
+      <WeatherIconSelector className={s.weatherIcon} icon={icon as WeatherVariantType} />
       <Typography className={s.temp} variant={'extra'}>{`${temp}°С`}</Typography>
       <Typography className={s.feelsLike}>{`Ощущается как ${fellsLikeTemp}°С`}</Typography>
       <Typography className={s.description} variant={'h2'}>

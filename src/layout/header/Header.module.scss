@@ -3,6 +3,10 @@
 .header {
   @include wrapper(--color-light-100);
 
+  @include breakpoint(md) {
+    justify-content: center;
+  }
+
   display: flex;
   align-items: center;
   justify-content: space-between;
