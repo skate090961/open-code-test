@@ -15,7 +15,7 @@ export function WeatherDetailsItem({ item }: DetailsInfoItemProps) {
     <li className={s.item}>
       <div className={s.title}>
         <SharedSvgSelector id={icon} size={25} />
-        <Typography className={s.description}>{title}</Typography>
+        <Typography>{title}</Typography>
       </div>
       <Typography className={s.value} variant={'body1'}>
         {value}

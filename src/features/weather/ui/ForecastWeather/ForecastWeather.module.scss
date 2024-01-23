@@ -18,6 +18,10 @@
 }
 
 .temp {
+  @include breakpoint(xs) {
+    font-size: 18px;
+  }
+
   display: flex;
   justify-content: center;
 
@@ -54,6 +58,11 @@
 }
 
 .info {
+  @include breakpoint(xs) {
+    font-size: 12px;
+    line-height: 1rem;
+  }
+
   display: flex;
   justify-content: center;
   margin-top: 0.5rem;

@@ -42,8 +42,7 @@ body {
   font-family: var(--font-family-primary);
   line-height: var(--line-height-m);
   color: var(--color-dark-900);
-
-  background: rgb(149 208 255);
+  background: rgb(149 208 255) no-repeat;
   background: linear-gradient(0deg, rgb(149 208 255 / 100%) 0%, rgb(25 119 241 / 100%) 100%);
 }
 
