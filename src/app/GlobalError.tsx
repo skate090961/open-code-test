@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 
-import { selectErrorMessage } from '@/app/model'
-import { setAppError } from '@/app/model/appReducer'
+import { selectErrorMessage } from '@/app/model/reducer'
+import { setAppError } from '@/app/model/reducer/appReducer'
 import { useAppDispatch, useAppSelector } from '@/common/hooks'
 
 export function GlobalError() {

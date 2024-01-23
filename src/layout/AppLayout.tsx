@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { useSelector } from 'react-redux'
 
 import { GlobalError } from '@/app'
-import { selectAppStatus } from '@/app/model'
+import { selectAppStatus } from '@/app/model/reducer'
 import { LinearLoader } from '@/common/components/linearLoader'
 import { useAppSelector } from '@/common/hooks'
 import { selectStatusAddress } from '@/features/searchCity/model/reducer'

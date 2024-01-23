@@ -1,4 +1,4 @@
-import { setAppStatus } from '@/app/model/appReducer'
+import { setAppStatus } from '@/app/model/reducer/appReducer'
 import { handleError } from '@/common/utils'
 import { weatherApi } from '@/features/weather/api'
 import {

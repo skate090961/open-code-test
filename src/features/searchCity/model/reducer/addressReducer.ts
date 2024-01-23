@@ -1,4 +1,4 @@
-import { RequestStatusType } from '@/app/model/appReducer'
+import { RequestStatusType } from '@/app/model/reducer/appReducer'
 
 export type CoordsType = {
   lat: string

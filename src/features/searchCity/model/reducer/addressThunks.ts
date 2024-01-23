@@ -1,4 +1,4 @@
-import { setAppStatus } from '@/app/model/appReducer'
+import { setAppStatus } from '@/app/model/reducer/appReducer'
 import { handleError } from '@/common/utils'
 import { geocodeMapsApi } from '@/features/searchCity/api'
 import {
