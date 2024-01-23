@@ -1,16 +1,18 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 
+import { selectAppStatus } from '@/app/model/reducer'
 import { useAppDispatch } from '@/common/hooks'
-import { fetchCities, selectStatusAddress } from '@/features/searchCity/model/reducer'
+import { fetchCities, selectAddressStatus } from '@/features/searchCity/model/reducer'
 
 type Inputs = {
   city: string
 }
 
 export function useCitySearchForm() {
-  const statusAddress = useSelector(selectStatusAddress)
-  const isLoading = statusAddress === 'loading'
+  const addressStatus = useSelector(selectAddressStatus)
+  const appStatus = useSelector(selectAppStatus)
+  const isLoading = appStatus === 'loading' && appStatus === 'loading'
   const dispatch = useAppDispatch()
   const { handleSubmit, register, reset } = useForm<Inputs>()
 
@@ -20,6 +22,7 @@ export function useCitySearchForm() {
   }
 
   return {
+    addressStatus,
     handleSubmit,
     isLoading,
     onSubmit,

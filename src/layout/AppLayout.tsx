@@ -5,7 +5,7 @@ import { GlobalError } from '@/app'
 import { selectAppStatus } from '@/app/model/reducer'
 import { LinearLoader } from '@/common/components/linearLoader'
 import { useAppSelector } from '@/common/hooks'
-import { selectStatusAddress } from '@/features/searchCity/model/reducer'
+import { selectAddressStatus } from '@/features/searchCity/model/reducer'
 import { CitySelector } from '@/features/searchCity/ui/CitySelector'
 
 type AppLayoutProps = {
@@ -15,7 +15,7 @@ type AppLayoutProps = {
 
 export function AppLayout({ header, main }: AppLayoutProps) {
   const appStatus = useAppSelector(selectAppStatus)
-  const addressStatus = useSelector(selectStatusAddress)
+  const addressStatus = useSelector(selectAddressStatus)
 
   return (
     <div className={'global-container'}>
