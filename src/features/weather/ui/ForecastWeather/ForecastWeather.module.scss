@@ -1,4 +1,10 @@
+@import '@/styles/mixins';
+
 .item {
+  @include breakpoint(md) {
+    padding: 0;
+  }
+
   user-select: none;
 
   display: flex;

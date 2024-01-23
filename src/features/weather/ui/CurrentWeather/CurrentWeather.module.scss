@@ -40,6 +40,9 @@
   @include breakpoint(md) {
     display: none;
   }
+
+  display: flex;
+  justify-content: center;
 }
 
 .icon {
